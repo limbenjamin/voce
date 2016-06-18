@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block head %}
+<meta name="keywords" content="
+  {%- if GLOBAL_KEYWORDS -%}
+    {{ GLOBAL_KEYWORDS|join(', ') }}
+    {%- if article.tags -%}{{', '}}{%- endif -%}
+  {%- endif -%}
+  {{article.tags|join(', ') }}">
+
+  {% if FUZZY_DATES %}
+  {% assets filters="slimit", output="js/lw-timeago.%(version)s.min.js", "js/lw-timeago/lw-timeago.js" %}
+<meta property="og:title" content="{{ article.title }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{{ SITEURL }}/{{ article.ogimage }}"/>
+<meta property="og:image:secure_url" content="{{ SITEURL }}/{{ article.ogimage }}"/>
+<meta property="og:site_name" content="{{ SITEURL }}">
+<meta property="og:description" content="{{ article.summary|striptags }}">
+<meta property="og:url" content="http://{{ SITEURL }}/articles/{{ article.slug }}.html">
+<meta property="fb:admins" content=""/>
+<meta property="fb:app_id" content=""/>
+<script src="{{ SITEURL }}/{{ ASSET_URL }}" type="text/javascript"></script>
+  {% endassets%}
+  {% endif %}
+{% endblock %}
+{% block metatitle %}{{ article.title|striptags|escape }}{% endblock %}
+{% block title %}{{ article.title|striptags|escape }}{% endblock %}
+{% block description %}{{ article.title|striptags|escape }} | {{ article.content|striptags|truncate(154-article.title|length)|escape }}{% endblock %}
+
+{% block content %}
+<article>
+  <div class="blog-item-wrap">
+    <div class="post-inner-content">
+      <header class="entry-header page-header">
+        <li class="cat-item"><time datetime="{{ article.date }}">{{ article.locale_date }}</time></li>
+        <h1 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1>
+      </header><!-- .entry-header -->
+      <div class="fb-like" data-href="{{ SITEURL }}/{{ article.url }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+      <div class="entry-content">
+        {{ article.content }}
+      </div><!-- .entry-content -->
+      <br /><br />
+      <div class="article_meta">
+        {% if TAG_URL and article.tags %}
+        Tags:
+          {% for tag in article.tags %}
+          <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %},{% endif %}
+          {% endfor %}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article><!-- #post-## -->
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% if FUZZY_DATES %}
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+{% endif %}
+{% endblock %}

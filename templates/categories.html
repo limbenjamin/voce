@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block metatitle %}Categories | {{ SITENAME }}{% endblock %}
+{% block title %}Categories | {{ SITENAME }}{% endblock %}
+
+{% block description %}A listing of all categories on this site{% endblock %}
+
+{% block content %}
+<article>
+  <div class="article_text">
+    <ul>
+      {% for category, articles in categories|sort %}
+      <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a> ({{ articles|count }})</li>
+      {% endfor %}
+    </ul>
+  </div>
+</article>
+{% endblock %}

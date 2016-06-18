@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block metatitle %}Authors | {{ SITENAME }}{% endblock %}
+{% block title %}Authors | {{ SITENAME }}{% endblock %}
+
+{% block description %}A listing of all authors on this site{% endblock %}
+
+{% block content %}
+<article>
+  <div class="article_text">
+    <ul>
+      {% for author, articles in authors|sort %}
+      <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> ({{ articles|count }})</li>
+      {% endfor %}
+    </ul>
+  </div>
+</article>
+{% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block metatitle %}{{ page.title|striptags|escape }}{% endblock %}
+{% block title %}{{ page.title|striptags|escape }}{% endblock %}
+{% block description %}{{ page.summary|striptags|escape }}{% endblock %}
+
+
+{% block content %}
+<article>
+  <div class="blog-item-wrap">
+    <div class="post-inner-content">
+      <header class="entry-header page-header">
+        <li class="cat-item"><time datetime="{{ page.modified }}">Last Modified {{ page.locale_modified }}</time></li>
+        <h1 class="entry-title"><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h1>
+      </header><!-- .entry-header -->
+      <div class="entry-content">
+        {{ page.content }}
+      </div><!-- .entry-content -->
+      <br /><br />
+    </div>
+  </div>
+</article><!-- #post-## -->
+{% endblock %}
+

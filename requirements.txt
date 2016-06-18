@@ -1,0 +1,11 @@
+# Update when 0.11 is released (needed for slimit and libsass support)
+webassets==dev
+
+cssmin==0.2.0
+#libsass==0.7.0 # G++ >= 4.8 needed to compile and NA on Debian wheezy
+pyScss==1.3.4 # API may change
+slimit==0.8.1
+
+# Ply 3.6 has an issue that causes slimit to fail
+# https://github.com/dabeaz/ply/issues/63
+ply==3.4

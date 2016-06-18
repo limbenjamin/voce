@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block metatitle %}Archive{% endblock %}
+{% block title %}Archive{% endblock %}
+
+{% block description %}A listing of all articles on this site{% endblock %}
+
+{% block content %}
+<article>
+  <div class="article_text">
+    <dl>
+      {% for year, year_articles in articles|groupby('date.year')|reverse %}
+        <h2>{{ year }}</h2>
+        {% for _, month_articles in year_articles|groupby('date.month')|reverse %}
+          {# A little gross, but works (need a date object to get the month name). #}
+          <h3>{{ month_articles[0].date.strftime('%B') }}</h3>
+          <ul>
+            {% for article in month_articles %}
+              <li><time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%b %d, %Y') }}</time> - <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      {% endfor %}
+    </dl>
+  </div>
+  <div class="article_meta"></div>
+</article>
+{% endblock %}

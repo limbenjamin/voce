@@ -1,0 +1,25 @@
+<p>
+{% if INDEX_SAVE_AS %}
+<a href="{{ SITEURL }}/{{ INDEX_SAVE_AS }}">Index</a>
+{% else %}
+<a href="{{ SITEURL }}">Index</a>
+{% endif %}
+{% if ARCHIVES_URL %}
+&#124; <a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Archives</a>
+{% endif %}
+{% if TAGS_URL %}
+      {% for tag, articles in tags|sort %}
+        &#124; <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}({{ articles|count }})</a>
+      {% endfor %}
+{% endif %}
+
+
+
+
+{% if CATEGORIES_URL %}
+&#124; <a href="{{ SITEURL }}/{{ CATEGORIES_URL }}">Categories</a>
+{% endif %}
+{% if AUTHORS_URL %}
+&#124; <a href="{{ SITEURL }}/{{ AUTHORS_URL }}">Authors</a>
+{% endif %}
+</p>

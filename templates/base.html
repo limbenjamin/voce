@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="{{ AUTHOR }}">
+  <meta name="description" content="{% block description %}Articles by {{ AUTHOR }}{% endblock %}">
+  <meta name="title" content="{% block metatitle %}{{ SITENAME }}{% endblock %}">
+  
+  <base href="{{ SITEURL }}">
+
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">  
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/font.css" type="text/css" media="all">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css" media="all">
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{{ SITEURL }}/theme/js/functions.min.js"></script>
+
+  
+ 
+
+  {% if FEED_ALL_ATOM %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
+  {% endif %}
+  {% if FEED_ALL_RSS %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
+  {% endif %}
+
+  {% block head %}
+  <meta name="keywords" content="
+    {%- if GLOBAL_KEYWORDS -%}
+      {{ GLOBAL_KEYWORDS|join(', ') }}
+      {%- if tags -%}{{', '}}{%- endif -%}
+    {%- endif -%}
+    {{tags|join(', ', attribute='0') }}">
+  {% endblock %}
+
+  <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+
+  {% include "modules/analytics.html" %}
+  
+</head>
+
+{% macro get_icon(link) %}
+
+  {# Attempt to normalize link URLs #}
+  {%- set temp = link|lower|replace('http://', '')|replace('https://', '')|replace('www.', '') -%}
+
+  {# Choosing a specific link icon #}
+
+
+  {%- if temp.startswith('bitcoin:') %}{% set class = 'fa-btc' %}
+  {% elif temp.startswith('irc:') %}{% set class = 'fa-comments' %}
+  {% elif temp.startswith('mailto:') %}{% set class = 'fa-envelope' %}
+  {% elif temp.startswith('skype:') %}{% set class = 'fa-skype' -%}
+  {%- elif temp.startswith('bitbucket.org') %}{% set class = 'fa-bitbucket' %}
+  {% elif temp.startswith('delicious.com') %}{% set class = 'fa-delicious' %}
+  {% elif temp.startswith('deviantart.com') %}{% set class = 'fa-deviantart' %}
+  {% elif temp.startswith('facebook.com') %}{% set class = 'fa-facebook' %}
+  {% elif temp.startswith('flickr.com') %}{% set class = 'fa-flickr' %}
+  {% elif temp.startswith('foursquare.com') %}{% set class = 'fa-foursquare' %}
+  {% elif temp.startswith('github.com') %}{% set class = 'fa-github' %}
+  {% elif temp.startswith('instagram.com') %}{% set class = 'fa-instagram' %}
+  {% elif temp.startswith('last.fm') %}{% set class = 'fa-lastfm' %}
+  {% elif temp.startswith('sg.linkedin.com') %}{% set class = 'fa-linkedin' %}
+  {% elif temp.startswith('news.ycombinator.com') %}{% set class = 'fa-hacker-news' %}
+  {% elif temp.startswith('pinterest.com') %}{% set class = 'fa-pinterest' %}
+  {% elif temp.startswith('plus.google.com') %}{% set class = 'fa-google-plus' %}
+  {% elif temp.startswith('reddit.com') %}{% set class = 'fa-reddit' %}
+  {% elif temp.startswith('spotify.com') %}{% set class = 'fa-spotify' %}
+  {% elif temp.startswith('stackoverflow.com') %}{% set class = 'fa-stack-overflow' %}
+  {% elif temp.startswith('steamcommunity.com') %}{% set class = 'fa-steam' %}
+  {% elif temp.startswith('soundcloud.com') %}{% set class = 'fa-soundcloud' %}
+  {% elif temp.startswith('twitch.tv') %}{% set class = 'fa-twitch' %}
+  {% elif temp.startswith('twitter.com') %}{% set class = 'fa-twitter' %}
+  {% elif temp.startswith('vimeo.com') %}{% set class = 'fa-vimeo-square' %}
+  {% elif temp.startswith('vine.co') %}{% set class = 'fa-vine' %}
+  {% elif temp.startswith('youtube.com') %}{% set class = 'fa-youtube' -%}
+  {%- elif '.stackexchange.com' in temp %}{% set class = 'fa-stack-exchange' %}
+  {%- elif 'atom' in temp %}{% set class = 'fa-rss' %}
+  {% endif -%}
+
+  <i class="fa {{ class }} fa-lg"></i>
+{%- endmacro -%}
+
+{%- macro display_link(name, link, text) -%}
+  {%- if MANGLE_EMAILS and link.startswith('mailto:') -%}
+  <a data-email="{{ link|reverse }}"{% if not text %} data-title="{{ name }}"{% endif %} title="You need javascript enabled to view this email" class="email">{{ text }}{{ get_icon(link) }}</a>
+  {%- else -%}
+  <a href="{{ link }}"{% if not text %} title="{{ name }}"{% endif %}>{{ text }}{{ get_icon(link) }}</a>
+  {%- endif -%}
+{%- endmacro -%}
+
+<body class="home blog">
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '520142688161055',
+        xfbml      : true,
+        version    : 'v2.6'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <div>
+    <header class="site-header">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="row">
+            <div class="site-navigation-inner col-sm-12">
+              <div class="navbar-header">
+                <button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul id="menu-all-pages" class="nav navbar-nav">
+                {% for name, link in LINKS %}
+                <li class="menu-item">{{ display_link(name, link, name) }}</li>
+                {% endfor %}
+              </ul>
+              </div>
+              <div class="social">   
+               {% for name, link in SOCIAL %}
+                {{ display_link(name, link, "") }}
+               {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav><!-- .site-navigation -->
+
+      <div class="container">
+      <div id="logo">
+        <span class="site-name"><a class="navbar-brand" href="{{ SITEURL }}"><img width="310" src="{{ SITEURL }}/images/logo.png" class="attachment-full size-full" alt="logo">          </a>
+        </span><!-- end of .site-name -->
+      </div><!-- end of #logo -->
+        <div class="tagline">
+            {% if TAGS_URL %}
+              {% for tag, articles in tags|sort %}
+                <a href="{{ SITEURL }}/{{ tag.url }}" {{ 'class="active"' if  output_file == tag.url }}>{{ tag }} ({{ articles|count }})</a> &#124; 
+              {% endfor %}
+            {% endif %}
+            {% if ARCHIVES_URL %}
+                <a href="{{ SITEURL }}/{{ ARCHIVES_URL }}" {{ 'class="active"' if  output_file == ARCHIVES_URL }}>{{ 'Archives ('+ articles|count|string + ')' if  articles|count > all_articles|count  else 'Archives (' + all_articles|count|string + ')'}}</a>
+            {% endif %}
+        </div>
+    </div>
+
+  </header><!-- #masthead -->
+
+    <div id="content" class="site-content">
+      <div class="container main-content-area">
+        <div class="row">
+          <div class="main-content-inner col-sm-12 col-md-12">
+            <div id="primary" class="content-area">
+              <main id="main" class="site-main" role="main">
+                <div class="article-container">
+                  {% block content %}
+                  {% endblock %}
+                </div>
+                  {% block footer %}
+                  {% endblock %}
+              </main><!-- #main -->
+          </div><!-- #primary -->
+        </div>
+      </div><!-- close .row -->
+    </div><!-- close .container -->
+  </div><!-- close .site-content -->
+
+
+
+
+  <div id="footer-area">
+    <footer id="colophon" class="site-footer" role="contentinfo">
+      <div class="site-info container">
+        <div class="row">
+                    <div class="copyright col-md-12">
+                    <a href="{{ SITEURL }}/pages/privacy-policy">Privacy Policy</a> | 
+                    <a href="{{ SITEURL }}/feeds/all.atom.xml">Atom Feed</a> | 
+                    <a href="{{ SITEURL }}/sitemap.xml">Sitemap</a><br />
+                    This site uses the Voce theme by <a href="//limbenjamin.com/">Benjamin Lim</a><br />
+                    &copy; 2012-2016 <a href="{{ SITEURL }}">{{ AUTHOR }}</a> </div>
+        </div>
+      </div><!-- .site-info -->
+      <div class="scroll-to-top" style="display: none;"><i class="fa fa-angle-up"></i></div><!-- .scroll-to-top -->
+    </footer><!-- #colophon -->
+  </div>
+  </main>
+
+  {% block scripts %}
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+  {% if MANGLE_EMAILS %}
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+      var e = document.querySelectorAll(".email");
+      for (var i = 0; i < e.length; i++) {
+        var email = e[i].getAttribute("data-email")
+        var title = e[i].getAttribute("data-title")
+        if (email){
+          e[i].href = email.split("").reverse().join("");
+          e[i].removeAttribute("data-email");
+          e[i].removeAttribute("data-title");
+          e[i].removeAttribute("class");
+          if (title){
+            e[i].setAttribute("title", title);
+          }
+          else{
+            e[i].removeAttribute("title");
+          }
+        }
+      }
+    })
+  </script>
+  {% endif %}
+
+
+  {% endblock scripts %}
+</body>
+</html>
