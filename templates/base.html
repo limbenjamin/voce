@@ -100,24 +100,6 @@
 {%- endmacro -%}
 
 <body class="home blog">
-  <div id="fb-root"></div>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '520142688161055',
-        xfbml      : true,
-        version    : 'v2.6'
-      });
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  </script>
   <div>
     <header class="site-header">
       <nav class="navbar navbar-default" role="navigation">
@@ -198,7 +180,7 @@
                     <a href="{{ SITEURL }}/pages/privacy-policy">Privacy Policy</a> | 
                     <a href="{{ SITEURL }}/feeds/all.atom.xml">Atom Feed</a> | 
                     <a href="{{ SITEURL }}/sitemap.xml">Sitemap</a><br />
-                    This site uses the Voce theme by <a href="//limbenjamin.com/">Benjamin Lim</a><br />
+                    This site uses the <a href="https://github.com/limbenjamin/voce">voce</a> theme by <a href="//limbenjamin.com/">Benjamin Lim</a><br />
                     &copy; 2012-2016 <a href="{{ SITEURL }}">{{ AUTHOR }}</a> </div>
         </div>
       </div><!-- .site-info -->

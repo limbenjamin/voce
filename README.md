@@ -1,7 +1,7 @@
-Subtle Pelican Theme
-====================
+voce theme for Pelican
+======================
 
-[Voce](https://github.com/limbenjamin/voce) is a responsive theme for [Pelican](http://getpelican.com). It was templated on [pelican-svbhack](https://github.com/gfidente/pelican-svbhack) by [Giulio Fidente](https://github.com/giulivo). It is lightweight and suitable for text heavy articles.
+[voce](https://github.com/limbenjamin/voce) is a responsive theme for [Pelican](http://getpelican.com). It was templated on [pelican-svbhack](https://github.com/gfidente/pelican-svbhack) by [Giulio Fidente](https://github.com/giulivo). It is lightweight and suitable for text heavy articles.
 
 
 ## Demo
