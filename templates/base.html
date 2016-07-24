@@ -16,7 +16,7 @@
   
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" media="all">
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/font.css" type="text/css" media="all">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css" media="all">
 
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
@@ -155,14 +155,14 @@
         <div class="row">
           <div class="main-content-inner col-sm-12 col-md-12">
             <div id="primary" class="content-area">
-              <main id="main" class="site-main" role="main">
+              <div id="main" class="site-main" role="main">
                 <div class="article-container">
                   {% block content %}
                   {% endblock %}
                 </div>
                   {% block footer %}
                   {% endblock %}
-              </main><!-- #main -->
+              </div><!-- #main -->
           </div><!-- #primary -->
         </div>
       </div><!-- close .row -->
@@ -187,7 +187,6 @@
       <div class="scroll-to-top" style="display: none;"><i class="fa fa-angle-up"></i></div><!-- .scroll-to-top -->
     </footer><!-- #colophon -->
   </div>
-  </main>
 
   {% block scripts %}
   <script type="text/javascript">
