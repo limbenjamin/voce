@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="{{ AUTHOR }}">
   <meta name="description" content="{% block description %}Articles by {{ AUTHOR }}{% endblock %}">
-  <meta name="title" content="{% block metatitle %}{{ SITENAME }}{% endblock %}">
   
   <base href="{{ SITEURL }}">
 
@@ -95,7 +94,7 @@
   {%- if MANGLE_EMAILS and link.startswith('mailto:') -%}
   <a data-email="{{ link|reverse }}"{% if not text %} data-title="{{ name }}"{% endif %} title="You need javascript enabled to view this email" class="email">{{ text }}{{ get_icon(link) }}</a>
   {%- else -%}
-  <a href="{{ link }}"{% if not text %} title="{{ name }}"{% endif %}>{{ text }}{{ get_icon(link) }}</a>
+  <a href="{{ link }}"{% if not text %} title="{{ name }}"{% endif %} {{ 'class="active"' if  output_file == link }}>{{ text }}{{ get_icon(link) }}</a>
   {%- endif -%}
 {%- endmacro -%}
 
@@ -149,7 +148,7 @@
     </div>
 
   </header><!-- #masthead -->
-
+  </div>
     <div id="content" class="site-content">
       <div class="container main-content-area">
         <div class="row">
