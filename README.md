@@ -30,9 +30,7 @@ compiling the [SCSS](http://www.sass-lang.com) styles.
 
 - All these can be installed with `pip` by running `pip install -r requirements.txt`
 
-Additionally, to integrate the `webassets` package into pelican, the [pelican-assets plugin](https://github.com/pR0Ps/pelican-assets)
-is required. It's included in this repo as a submodule so it just needs to be
-activated in `pelicanconf.py`.
+Additionally, to integrate the `webassets` package into pelican, the [pelican-assets plugin](https://github.com/getpelican/pelican-plugins/tree/master/assets) is required. It's included in this repo so it just needs to be activated in `pelicanconf.py`. If you encounter any issues, you might need to download the latest version from the link above and replace the assets folder.
 
 - Add `"<theme dir>/plugins"` to the `PLUGIN_PATHS` list (or `os.path.join("<theme dir>", "plugins")` if you're feeling Pythonic)
 - Add `"assets"` to the `PLUGINS` list
