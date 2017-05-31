@@ -60,7 +60,7 @@ The following variables are required in pelicanconf.py to display the submenu wi
 - TAGS_URL = 'tags.html'
 - ARCHIVES_URL = 'archives.html'
 
-# Sample Links and Social Widget
+### Sample Links and Social Widget
 LINKS = (('Home','index.html'),
      ('About','pages/about.html'),)
 
@@ -68,7 +68,7 @@ SOCIAL = (('Feed','/feeds/all.atom.xml'),
       ('Email','mailto:xxx@gmail.com'),
       ('GitHub','http://github.com/limbenjamin'),)
 
-# Social Icons
+### Social Icons
 
 voce uses social icons from font-awesome. To customise the icons, you will need to edit base.html. Change the link to the domain you wish to link to and look up the class name from [font-awesome](http://fontawesome.io/icons/).
 
