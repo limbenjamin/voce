@@ -55,6 +55,27 @@ This theme supports a number of custom variables:
 - `GLOBAL_KEYWORDS`: A list of strings that will be set as meta keywords for each page.
 - `FUZZY_DATES`: If `True`, uses [lw-timeago](https://github.com/pR0Ps/lw-timeago) to display fuzzy dates on articles (eg. 'Posted 3 months ago').
 
+The following variables are required in pelicanconf.py to display the submenu with article categories. 
+
+- TAGS_URL = 'tags.html'
+- ARCHIVES_URL = 'archives.html'
+
+# Sample Links and Social Widget
+LINKS = (('Home','index.html'),
+     ('About','pages/about.html'),)
+
+SOCIAL = (('Feed','/feeds/all.atom.xml'),
+      ('Email','mailto:xxx@gmail.com'),
+      ('GitHub','http://github.com/limbenjamin'),)
+
+# Social Icons
+
+voce uses social icons from font-awesome. To customise the icons, you will need to edit base.html. Change the link to the domain you wish to link to and look up the class name from [font-awesome](http://fontawesome.io/icons/).
+
+{% elif temp.startswith('mailto:') %}{% set class = 'fa-envelope' %} 
+{% elif temp.startswith('facebook.com') %}{% set class = 'fa-facebook' %}
+{% elif temp.startswith('flickr.com') %}{% set class = 'fa-flickr' %}
+
 ## Authors
 
 pelican-subtle is authored by [pR0Ps](https://github.com/pR0Ps).
