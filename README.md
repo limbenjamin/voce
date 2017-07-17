@@ -61,8 +61,8 @@ The following variables are required in pelicanconf.py to display the submenu wi
 - ARCHIVES_URL = 'archives.html'
   
 ### Sample Links and Social Widget  
-LINKS = (('Home','index.html'),  
-     ('About','pages/about.html'),)  
+LINKS = (('Home','/index.html'),  
+     ('About','/pages/about.html'),)  
   
 SOCIAL = (('Feed','/feeds/all.atom.xml'),  
       ('Email','mailto:xxx@gmail.com'),  
