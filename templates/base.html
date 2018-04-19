@@ -13,7 +13,7 @@
   
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" media="all">
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/font.css" type="text/css" media="all">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css" media="all">
 
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
@@ -76,8 +76,10 @@
   {% elif temp.startswith('stackoverflow.com') %}{% set class = 'fa-stack-overflow' %}
   {% elif temp.startswith('steamcommunity.com') %}{% set class = 'fa-steam' %}
   {% elif temp.startswith('soundcloud.com') %}{% set class = 'fa-soundcloud' %}
+  {% elif temp.startswith('t.me') %}{% set class = 'fa-telegram' %}
   {% elif temp.startswith('twitch.tv') %}{% set class = 'fa-twitch' %}
   {% elif temp.startswith('twitter.com') %}{% set class = 'fa-twitter' %}
+  {% elif temp.startswith('vk.com') %}{% set class = 'fa-vk' %}
   {% elif temp.startswith('vimeo.com') %}{% set class = 'fa-vimeo-square' %}
   {% elif temp.startswith('vine.co') %}{% set class = 'fa-vine' %}
   {% elif temp.startswith('youtube.com') %}{% set class = 'fa-youtube' -%}
