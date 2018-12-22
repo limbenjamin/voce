@@ -1,5 +1,4 @@
-# Update when 0.11 is released (needed for slimit and libsass support)
-webassets==dev
+webassets==0.12.1
 
 cssmin==0.2.0
 #libsass==0.7.0 # G++ >= 4.8 needed to compile and NA on Debian wheezy
