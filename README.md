@@ -25,7 +25,7 @@ You can see the theme in action on [my site](https://limbenjamin.com/)
 ## Installing
 
 1. Clone [this repository](https://github.com/limbenjamin/voce) (ex: `git clone https://github.com/limbenjamin/voce`)
-2. Clone the [pelican-plugins repository](https://github.com/getpelican/pelican-plugins) (ex: `git clone https://github.com/getpelican/pelican-plugins
+2. Clone the [pelican-plugins repository](https://github.com/getpelican/pelican-plugins) (ex: `git clone https://github.com/getpelican/pelican-plugins`)
 2. Install python dependencies (ex: `pip install -r requirements.txt`)
 3. Modify the the following variables in `pelicanconf.py`. Make sure that PLUGIN_PATHS points to the cloned pelican-plugins repository and THEME points to the cloned theme.
 ```
