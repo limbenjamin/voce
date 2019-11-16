@@ -26,9 +26,9 @@ You can see the theme in action on [my site](https://limbenjamin.com/)
 1. Clone [this repository](https://github.com/limbenjamin/voce) (ex: `git clone https://github.com/limbenjamin/voce`)
 2. Modify the following variable in pelicanconf.py.
 ```
-THEME = './themes/voce/' 							# make sure path points to folder where you cloned the theme
-DEFAULT_DATE_FORMAT = "%b %d, %Y" 					# short date format, optional but recommended 
-USER_LOGO_URL = "http://i.imgur.com/zzCRZUH.jpg"	# change URL to point to desired logo for site
+THEME = './themes/voce/'                          # make sure path points to folder where you cloned the theme
+DEFAULT_DATE_FORMAT = "%b %d, %Y"                 # short date format, optional but recommended 
+USER_LOGO_URL = "http://i.imgur.com/zzCRZUH.jpg"  # change URL to point to desired logo for site
 ```
 3. That's all.
 
