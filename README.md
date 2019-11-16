@@ -21,30 +21,20 @@ You can see the theme in action on [my site](https://limbenjamin.com/)
 - Fuzzy date display (ex: "Posted 2 days ago") using Javascript
 - Automatically minifies and compresses Javascript and CSS
 
-## Dependencies
-
-For automatic minification and compression of assets, this theme uses the
-[webassets](https://webassets.readthedocs.org/) package, along with `cssmin` for
-minifying css, `slimit` for compressing Javascript, and `libsass` for
-compiling the [SCSS](http://www.sass-lang.com) styles.
-
-- All these can be installed with `pip` by running `pip install -r requirements.txt`
-
-Additionally, to integrate the `webassets` package into pelican, the [pelican-assets plugin](https://github.com/getpelican/pelican-plugins/tree/master/assets) is required. It's included in this repo so it just needs to be activated in `pelicanconf.py`. If you encounter any issues, you might need to download the latest version from the link above and replace the assets folder.
-
-- Add `"<theme dir>/plugins"` to the `PLUGIN_PATHS` list (or `os.path.join("<theme dir>", "plugins")` if you're feeling Pythonic)
-- Add `"assets"` to the `PLUGINS` list
 
 ## Installing
 
-1. Clone [this repository](https://github.com/limbenjamin/voce) making sure to get the submodules (ex: `git clone --recursive <repo>`)
-2. Install and configure the required dependencies (see above)
-3. Modify the `THEME` variable in `pelicanconf.py` to point to the cloned theme location
-4. Customize the theme using the options below
+1. Clone [this repository](https://github.com/limbenjamin/voce) (ex: `git clone https://github.com/limbenjamin/voce`)
+2. Clone the [pelican-plugins repository](https://github.com/getpelican/pelican-plugins) (ex: `git clone https://github.com/getpelican/pelican-plugins
+2. Install python dependencies (ex: `pip install -r requirements.txt`)
+3. Modify the the following variables in `pelicanconf.py`. Make sure that PLUGIN_PATHS points to the cloned pelican-plugins repository and THEME points to the cloned theme.
+```
+PLUGIN_PATHS = ['../pelican-plugins/'] 
+PLUGINS = ['assets']
+THEME = './themes/voce/'
+```
 
 ## pelicanconf.py
-
-When developing locally, you may want to set `SITEURL` to something like `http://localhost:8000`
 
 This theme supports a number of custom variables:
 
