@@ -1,7 +1,7 @@
 {% extends "index.html" %}
-{% block metatitle %}Tag: {{ tag }}{% endblock %}
-{% block title %}Tag: {{ tag }}{% endblock %}
-{% block description %}Articles tagged with '{{ tag }}' on this site{% endblock %}
+{% block metatitle %}Tag: {{ tag }} {{ dates_page }}{% endblock %}
+{% block title %}Tag: {{ tag }} {{ dates_page }}{% endblock %}
+{% block description %}Articles tagged with '{{ tag }} {{ dates_page }}' on this site{% endblock %}
 
 {% block head %}
 {% if TAG_FEED_ATOM %}

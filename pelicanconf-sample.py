@@ -21,6 +21,14 @@ DEFAULT_DATE_FORMAT = "%b %d, %Y"
 THEME = "voce"
 
 PLUGIN_PATHS = ["plugins", os.path.join(THEME, "plugins")]
+PLUGINS = ["assets", "sitemap"]
+MARKDOWN = {
+    'extensions' : ['markdown.extensions.codehilite', 'markdown.extensions.extra', 'markdown.extensions.admonition'],
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight','guess_lang': 'False', 'linenums': 'True'},
+    },
+    'output_format': 'html5',
+}
 
 LOAD_CONTENT_CACHE = False
 SLUGIFY_SOURCE = 'basename'

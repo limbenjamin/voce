@@ -1,4 +1,21 @@
 {% extends "base.html" %}
+{% block head %}
+<meta name="keywords" content="
+  {%- if GLOBAL_KEYWORDS -%}
+    {{ GLOBAL_KEYWORDS|join(', ') }}
+  {%- endif -%}">
+
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:type" content="website">
+{% if page.ogimage %}
+<meta property="og:image" content="http://{{ GOOGLE_ANALYTICS_PROP }}/{{ page.ogimage }}">
+<meta property="og:image:secure_url" content="https://{{ GOOGLE_ANALYTICS_PROP }}/{{ page.ogimage }}">
+{% endif %}
+<meta property="og:site_name" content="https://{{ GOOGLE_ANALYTICS_PROP }}">
+<meta property="og:description" content="{{ page.summary|striptags }}">
+<meta property="og:url" content="https://{{ GOOGLE_ANALYTICS_PROP }}/pages/{{ page.slug }}.html">
+
+{% endblock %}
 {% block metatitle %}{{ page.title|striptags|escape }}{% endblock %}
 {% block title %}{{ page.title|striptags|escape }}{% endblock %}
 {% block description %}{{ page.summary|striptags|escape }}{% endblock %}
@@ -10,7 +27,7 @@
     <div class="post-inner-content">
       <header class="entry-header page-header">
         <span class="cat-item"><time datetime="{{ page.modified }}">Last Modified {{ page.locale_modified }}</time></span>
-        <h1 class="entry-title"><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h1>
+        <h1 class="entry-title-single-page"><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h1>
       </header><!-- .entry-header -->
       <div class="entry-content">
         {{ page.content }}
@@ -20,4 +37,3 @@
   </div>
 </article><!-- #post-## -->
 {% endblock %}
-

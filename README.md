@@ -14,7 +14,6 @@ You can see the theme in action on [my site](https://limbenjamin.com/)
 
 - Clean, responsive design. Scales to fit any screen
 - Fully usable without Javascript (although enabling it adds more functionality)
-- Ability to hide email addresses from spambots
 - Syntax highlighting for code blocks
 - Integrated Google Analytics
 - Custom sidebar links and social icons

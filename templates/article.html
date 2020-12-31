@@ -7,6 +7,15 @@
   {%- endif -%}
   {{article.tags|join(', ') }}">
 
+<meta property="og:title" content="{{ article.title }}">
+<meta property="og:type" content="website">
+{% if article.ogimage %}
+<meta property="og:image" content="http://{{ GOOGLE_ANALYTICS_PROP }}/{{ article.ogimage }}"/>
+<meta property="og:image:secure_url" content="https://{{ GOOGLE_ANALYTICS_PROP }}/{{ article.ogimage }}"/>
+{% endif %}
+<meta property="og:site_name" content="https://{{ GOOGLE_ANALYTICS_PROP }}">
+<meta property="og:description" content="{{ article.summary|striptags|e }}">
+<meta property="og:url" content="https://{{ GOOGLE_ANALYTICS_PROP }}/articles/{{ article.slug }}.html">
 
 {% endblock %}
 {% block metatitle %}{{ article.title|striptags|escape }}{% endblock %}
